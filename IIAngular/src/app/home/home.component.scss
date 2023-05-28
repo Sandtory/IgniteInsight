@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  header .logo {
+    width: 100px;
+  }
+  
+  header nav ul {
+    display: flex;
+    gap: 20px;
+  }
+  
+  header .subscribe-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  main article {
+    margin-bottom: 20px;
+  }
+  
+  main article h2 {
+    margin-bottom: 10px;
+  }
+  
+  main article p {
+    margin-bottom: 5px;
+  }
+  
