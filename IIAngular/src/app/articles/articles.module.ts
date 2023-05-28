@@ -6,7 +6,7 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 
 
 @NgModule({
-  declarations: [ArticleListComponent, ArticleDetailComponent],
+  declarations: [ArticleListComponent, ],
   imports: [
     CommonModule
   ]

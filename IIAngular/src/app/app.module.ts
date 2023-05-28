@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { ArticleDetailComponent } from './articles/article-detail/article-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +20,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    AdminComponent,
     ArticleDetailComponent,
     NavbarComponent,
   ],
@@ -28,6 +28,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     NgbModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
