@@ -25,7 +25,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    ArticleDetailComponent,
     NavbarComponent,
   ],
   imports: [

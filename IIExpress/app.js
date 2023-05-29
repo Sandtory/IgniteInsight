@@ -16,6 +16,9 @@ mongoose.connect(`mongodb+srv://${process.env.MongoDBUser}:${process.env.MongoDB
   const articleSchema = new mongoose.Schema({
     title: String,
     content: String,
+    imageUrl: String, // New field for image URL
+    tags: [String], 
+    date: { type: Date, default: Date.now }
     // Add more fields as needed
   });
   // Mongodb article model
@@ -52,9 +55,33 @@ app.get('/api/articles', async (req, res) => {
   }
 });
 
+app.get('/api/articles/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const article = await Article.findById(id);
+    if (!article) {
+      return res.status(404).send('Article not found');
+    }
+    res.json(article);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 
 app.post('/api/articles', (req, res) => {
-  const article = new Article(req.body);
+  const { title, content, imageUrl, tags } = req.body;
+
+  // Check if title and content are not empty
+  if (!title || !content) {
+    res.status(400).send('Title and content are required.');
+    return;
+  }
+
+  // Create a new article with the request body
+  const article = new Article({ title, content, imageUrl, tags });
+
+  // Save the new article to the database
   article.save()
     .then(() => res.status(201).send())
     .catch(err => res.status(500).send(err));

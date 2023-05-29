@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../articles/article.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TemplateRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -15,8 +14,11 @@ export class HomeComponent implements OnInit {
     private articleService: ArticleService,
     ) { }
 
-  ngOnInit() {
-    
-  }
+    ngOnInit() {
+      this.articleService.getArticles().subscribe(articles => {
+        console.log(articles); // Add this line
+        this.articles = articles;
+      });
+    }
   
 }

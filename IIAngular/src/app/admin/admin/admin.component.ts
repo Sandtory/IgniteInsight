@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from '../admin.module'; 
 import { ArticleService } from 'src/app/articles/article.service';
-ArticleService
 
 @Component({
   selector: 'app-admin',
@@ -17,6 +16,8 @@ export class AdminComponent implements OnInit {
     this.articleForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
+      imageUrl: [''],
+      tags: ['']
     });
   }
   onSubmit() {
@@ -30,11 +31,7 @@ export class AdminComponent implements OnInit {
   
 
   ngOnInit() {
-    this.articleForm = this.fb.group({
-      title: new FormControl('', Validators.required),
-      content: new FormControl('', Validators.required)
-      
-    });
+    
   }
 }
 
