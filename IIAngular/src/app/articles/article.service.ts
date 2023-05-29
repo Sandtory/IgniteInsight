@@ -20,13 +20,14 @@ export class ArticleService {
   }
   
 
-  getArticle(id: number): Observable<any> {
+  getArticle(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/articles/${id}`).pipe(
       catchError(error => {
         console.error('Error fetching articles', error);
         return of([]);
       })
     );
+    
   }
 
   createArticle(article: any): Observable<any> {

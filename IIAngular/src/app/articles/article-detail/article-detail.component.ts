@@ -18,20 +18,15 @@ export class ArticleDetailComponent implements OnInit {
   ngOnInit() {
     // Get the ID from the route parameter
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('Article ID:', id);
   
-    // Check if id is null or not a valid number string
-    if (id === null || isNaN(Number(id))) {
+    // Check if id is null
+    if (id === null) {
       // Handle the error appropriately. For example:
-      console.error('Article ID is null or not a valid number string');
+      console.error('Article ID is null');
       return;
     }
-  
-    // Convert id to a number
-    const idNumber = Number(id);
-  
     // Use the ID to fetch the article from your backend
-    this.articleService.getArticle(idNumber).subscribe(article => {
+    this.articleService.getArticle(id).subscribe(article => {
       this.article = article;
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 
 
+
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
@@ -16,9 +17,7 @@ export class ArticleListComponent implements OnInit {
 
   ngOnInit() {
     this.articleService.getArticles().subscribe(articles => {
-      console.log(articles); // Add this line
       this.articles = articles;
     });
   }
-
 }

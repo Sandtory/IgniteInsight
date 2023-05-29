@@ -58,7 +58,9 @@ app.get('/api/articles', async (req, res) => {
 app.get('/api/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
+    console.log('Finding article with ID:', id);  // Log the ID
     const article = await Article.findById(id);
+    console.log('Found article:', article);  // Log the found article
     if (!article) {
       return res.status(404).send('Article not found');
     }
@@ -67,6 +69,7 @@ app.get('/api/articles/:id', async (req, res) => {
     res.status(500).send(err);
   }
 });
+
 
 
 app.post('/api/articles', (req, res) => {

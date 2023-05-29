@@ -23,11 +23,19 @@ export class AdminComponent implements OnInit {
   onSubmit() {
     if (this.articleForm.valid) {
       const article = this.articleForm.value;
-      this.articleService.createArticle(article).subscribe(() => {
-        console.log('Article created');
-      });
+      this.articleService.createArticle(article).subscribe(
+        () => {
+          console.log('Article created');
+          window.alert('Article created successfully!');
+        },
+        error => {
+          console.log('Error creating article', error);
+          window.alert('Error creating article. Please try again.');
+        }
+      );
     }
   }
+  
   
 
   ngOnInit() {
