@@ -16,9 +16,7 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.articleService.getArticles().subscribe(articles => {
-      this.articles = articles;
-    });
+    
   }
   
 }

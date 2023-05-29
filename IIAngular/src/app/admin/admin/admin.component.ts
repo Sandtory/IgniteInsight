@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AdminModule } from '../admin.module';
+import { AdminModule } from '../admin.module'; 
+import { ArticleService } from 'src/app/articles/article.service';
+ArticleService
 
 @Component({
   selector: 'app-admin',
@@ -11,7 +13,7 @@ import { AdminModule } from '../admin.module';
 export class AdminComponent implements OnInit {
   articleForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private articleService: ArticleService) {
     this.articleForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
@@ -20,9 +22,12 @@ export class AdminComponent implements OnInit {
   onSubmit() {
     if (this.articleForm.valid) {
       const article = this.articleForm.value;
-      // Call your ArticleService to save the article
+      this.articleService.createArticle(article).subscribe(() => {
+        console.log('Article created');
+      });
     }
   }
+  
 
   ngOnInit() {
     this.articleForm = this.fb.group({

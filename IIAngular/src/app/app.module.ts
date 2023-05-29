@@ -9,12 +9,17 @@ import { ArticleDetailComponent } from './articles/article-detail/article-detail
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ArticleListComponent } from './articles/article-list/article-list.component';
+import { ArticlesModule } from './articles/articles.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'articles', component: ArticleListComponent },
   { path: 'article/:id', component: ArticleDetailComponent },
   { path: 'admin', component: AdminComponent }
 ];
+
+
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule,
     ReactiveFormsModule,
+    ArticlesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
