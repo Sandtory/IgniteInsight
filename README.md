@@ -28,6 +28,8 @@ IgniteInsight incorporates sound security practices through Express.js middlewar
 
 The design of IgniteInsight is simple and user-friendly. It emphasizes its content, enabling readers to focus on the insights shared. This platform serves not just as a blog, but as a journey through the intellectual evolution of the author. It is a valuable tool for potential employers to gauge the depth and breadth of the author's expertise.
 
+<img width="1425" alt="Screenshot 2023-05-30 at 01 49 29" src="https://github.com/Sandtory/IgniteInsight/assets/82057616/6907ac07-96c9-4351-ac05-370374b2d3ba">
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
