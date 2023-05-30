@@ -2,7 +2,9 @@
   <header class="py-1 bg-light border-bottom mb-4">
     <div class="container">
       <div class="text-center my-3">
-        <a href="#" class="link-danger" (click)="openSubscribeModal($event)">Subscribe to my Newsletter</a>
+        <a href="#" class="link-danger" (click)="openSubscribeModal($event)"
+          >Subscribe to my Newsletter</a
+        >
       </div>
     </div>
   </header>
@@ -10,7 +12,7 @@
     <div class="row">
       <div class="col-lg-8">
         <!-- Blog post-->
-        <div class="card mb-4" *ngFor="let article of articles">
+        <div class="card mb-4" *ngFor="let article of articles.reverse()">
           <a [routerLink]="['/article', article._id]">
             <img
               class="card-img-top"
@@ -43,11 +45,7 @@
                 placeholder="Enter search term..."
                 aria-label="Enter search term..."
                 aria-describedby="button-search"
-              /><button
-                class="btn btn-dark"
-                id="button-search"
-                type="button"
-              >
+              /><button class="btn btn-dark" id="button-search" type="button">
                 Go!
               </button>
             </div>

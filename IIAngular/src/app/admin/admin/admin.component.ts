@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from '../admin.module'; 
 import { ArticleService } from 'src/app/articles/article.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,11 @@ import { ArticleService } from 'src/app/articles/article.service';
 export class AdminComponent implements OnInit {
   articleForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private articleService: ArticleService) {
+  constructor(
+    private fb: FormBuilder, 
+    private articleService: ArticleService,
+    private router: Router,
+    ) {
     this.articleForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
@@ -27,6 +32,7 @@ export class AdminComponent implements OnInit {
         () => {
           console.log('Article created');
           window.alert('Article created successfully!');
+          this.router.navigate(['/']);  // Navigate to homepage
         },
         error => {
           console.log('Error creating article', error);
