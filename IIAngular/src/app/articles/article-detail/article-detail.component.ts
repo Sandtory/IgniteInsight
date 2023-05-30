@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../article.service';
+import { SubscribeModalComponent } from 'src/app/subscribe-modal/subscribe-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-article-detail',
@@ -12,7 +15,8 @@ export class ArticleDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -29,6 +33,10 @@ export class ArticleDetailComponent implements OnInit {
     this.articleService.getArticle(id).subscribe(article => {
       this.article = article;
     });
+  }
+  openSubscribeModal(event: any) {
+    event.preventDefault();
+    this.modalService.open(SubscribeModalComponent);
   }
   
   

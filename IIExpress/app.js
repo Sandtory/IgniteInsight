@@ -26,7 +26,13 @@ const articleSchema = new mongoose.Schema({
   // Add more fields as needed
 });
 
-articleSchema.index({ title: 'text', content: 'text' });
+articleSchema.index({ title: "text", content: "text" }, function (err) {
+  if (err) {
+    console.error("Failed to create index", err);
+  } else {
+    console.log("Successfully created index");
+  }
+});
 
 // Mongodb article model
 const Article = mongoose.model("Article", articleSchema);
@@ -61,6 +67,17 @@ app.get("/api/articles", async (req, res) => {
   }
 });
 
+app.get("/api/articles/search", async (req, res) => {
+  try { 
+    const q = req.query.q;
+    const articles = await Article.find({ $text: { $search: q } });
+    res.json(articles);
+  } catch (err) {
+    console.error(err); 
+    res.status(500).json({ error: err.toString() });
+  }
+});
+
 app.get("/api/articles/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -74,12 +91,6 @@ app.get("/api/articles/:id", async (req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
-});
-
-app.get("/api/articles/search", async (req, res) => {
-  const q = req.query.q;
-  const articles = await Article.find({ $text: { $search: q } });
-  res.json(articles);
 });
 
 app.post("/api/articles", (req, res) => {

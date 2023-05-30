@@ -21,7 +21,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between px-3">
     <a class="navbar-brand" routerLink="/">
         <img src="assets/IgniteInsight_logo3_remake.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        IgniteInsight
+        <span class="logo-text px-1">IgniteInsight</span>
     </a>
     <!-- Mobile nav toggle-->
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +44,10 @@
       </ul>
       
     </div>
-    <form class="form-inline" (submit)="onSearch(search.value)">
+    <form class="form-inline" (submit)="onSearch(search.value); $event.preventDefault()">
       <input #search class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
+    
     
   </nav>
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

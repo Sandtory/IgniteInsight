@@ -33,6 +33,7 @@ export class ArticleService {
   }
 
   searchArticles(q: string): Observable<any[]> {
+    console.log(q)
     return this.http.get<any[]>(`${this.apiUrl}/articles/search?q=${q}`);
   }
 }
