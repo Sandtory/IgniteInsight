@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { ArticlesModule } from './articles/articles.module';
+import { SubscribeModalComponent } from './subscribe-modal/subscribe-modal.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    SubscribeModalComponent,
   ],
   imports: [
     BrowserModule,

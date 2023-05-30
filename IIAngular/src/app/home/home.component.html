@@ -7,9 +7,12 @@
         technical knowledge of its users.
       </p>
       <p>Made by Henning Sandtorv</p>
+      <a class="btn btn-primary" [routerLink]="['/articles']"
+              >Browse articles</a
+            >
     </div>
     <div class="row">
-      <p class="lead">Browse new articles</p>
+      <p class="lead">New articles</p>
       <div class="col-lg-4" *ngFor="let article of articles">
         <!-- Blog post-->
         <div class="card mb-4">

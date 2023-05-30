@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SubscribeModalComponent } from 'src/app/subscribe-modal/subscribe-modal.component';
 
 
 
@@ -13,6 +15,7 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -20,4 +23,9 @@ export class ArticleListComponent implements OnInit {
       this.articles = articles;
     });
   }
+  openSubscribeModal(event: any) {
+    event.preventDefault();
+    this.modalService.open(SubscribeModalComponent);
+  }
+  
 }
