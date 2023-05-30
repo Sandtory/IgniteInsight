@@ -9,50 +9,32 @@
   <div class="container">
     <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="p-3">
       <div class="form-group">
-        <label for="title">Title</label>
         <input
           id="title"
           type="text"
-          class="form-control"
+          class="form-control form-control-lg"
           formControlName="title"
+          placeholder="Title"
         />
       </div>
-      <div
-        class="text-danger"
-        *ngIf="
-          articleForm.get('title')?.invalid && articleForm.get('title')?.touched
-        "
-      >
-        Title is required.
+      <div class="form-group">
+        <ckeditor id="content"
+        class="form-control form-control-lg"
+        formControlName="content" 
+        [editor]="Editor" data=""
+        placeholder="Tell your story...">
+        </ckeditor>
       </div>
       <div class="form-group">
-        <label for="content">Content</label>
-        <textarea
-          id="content"
-          class="form-control"
-          formControlName="content"
-        ></textarea>
-      </div>
-      <div
-        class="text-danger"
-        *ngIf="
-          articleForm.get('content')?.invalid &&
-          articleForm.get('content')?.touched
-        "
-      >
-        Content is required.
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
         <input
           id="imageUrl"
-          type="text"
+          type="file"
           class="form-control"
           formControlName="imageUrl"
+          placeholder="Add an image"
         />
       </div>
       <div class="form-group">
-        <label for="tags">Tags</label>
         <input
           id="tags"
           type="text"
@@ -68,7 +50,7 @@
           class="btn btn-primary"
           [disabled]="!articleForm.valid"
         >
-          Submit
+          Publish
         </button>
       </div>
     </form>
@@ -76,7 +58,7 @@
   <footer class="py-3 bg-dark">
     <div class="container px-4">
       <p class="m-0 text-center text-white">
-        Copyright &copy; Your Website 2023
+        Copyright &copy; IgniteInsight 2023
       </p>
     </div>
   </footer>

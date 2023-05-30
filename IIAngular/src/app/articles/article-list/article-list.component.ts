@@ -12,6 +12,29 @@ import { SearchService } from 'src/app/services/search.service';
 export class ArticleListComponent implements OnInit {
   articles: any[] = [];
   errorMessage: string | null = null;
+  dummyArticles = [
+    {
+      _id: '3',
+      imageUrl: 'assets/IgniteInsight_logo3.png',
+      date: new Date(),
+      title: 'Dummy Article 3',
+      content: 'This is the last dummy article.'
+    },
+    {
+      _id: '2',
+      imageUrl: 'assets/IgniteInsight_logo3.png',
+      date: new Date(),
+      title: 'Dummy Article 2',
+      content: 'This is another dummy article.'
+    },
+    {
+      _id: '1',
+      imageUrl: 'assets/IgniteInsight_logo3.png',
+      date: new Date(),
+      title: 'Dummy Article 1',
+      content: 'This is a dummy article.'
+    },
+  ];
 
   constructor(
     private articleService: ArticleService,
@@ -28,12 +51,17 @@ export class ArticleListComponent implements OnInit {
       } else {
         // Only fetch all articles if there are no search results
         this.articleService.getArticles().subscribe(allArticles => {
-          this.articles = allArticles;
+          if (allArticles.length > 0) {
+            this.articles = allArticles;
+          } else {
+            this.articles = this.dummyArticles;
+          }
         });
         this.errorMessage = 'Cannot find any articles under that name';
       }
     });
   }
+  
   openSubscribeModal(event: any) {
     event.preventDefault();
     this.modalService.open(SubscribeModalComponent);

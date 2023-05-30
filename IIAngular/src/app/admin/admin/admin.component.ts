@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from '../admin.module'; 
 import { ArticleService } from 'src/app/articles/article.service';
 import { Router } from '@angular/router';
+import  * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-admin',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  public Editor = ClassicEditor;
   articleForm: FormGroup;
 
   constructor(

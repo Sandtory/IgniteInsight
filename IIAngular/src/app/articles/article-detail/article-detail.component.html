@@ -26,9 +26,7 @@
               {{ article.date | date : "short" }}
             </div>
             <h2 class="card-title h4">{{ article.title }}</h2>
-            <p class="card-text" *ngIf="article._id; else errorTemplate">
-              {{ article.content }}
-            </p>
+            <p class="card-text" *ngIf="article._id; else errorTemplate" [innerHTML]="article.content"></p>
             <ng-template #errorTemplate>
               <p>Error fetching article</p>
             </ng-template>
@@ -76,7 +74,7 @@
   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">
-        Copyright &copy; Your Website 2023
+        Copyright &copy; IgniteInsight 2023
       </p>
     </div>
   </footer>
