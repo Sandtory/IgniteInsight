@@ -1,4 +1,4 @@
-header {
+header { 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,5 +39,30 @@ header {
   
   main article p {
     margin-bottom: 5px;
+  }
+  
+  .masthead {
+    height: 70vh; /* Adjust this value to change the height of the header */
+    background-attachment: fixed; /* This makes the background image follow the scroll */
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  }
+  .page-heading {
+    color: white;
+  }
+  .card-text {
+    /* Make card text black and not underlined */
+    color: black;
+    text-decoration: none;
+  }
+  .post-title {
+    /* Make post title black and not underlined */
+    color: black;
+    text-decoration: none;
   }
   

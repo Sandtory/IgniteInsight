@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { ArticlesModule } from './articles/articles.module';
 import { SubscribeModalComponent } from './subscribe-modal/subscribe-modal.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 
 
@@ -33,6 +35,7 @@ const routes: Routes = [
     HomeComponent,
     NavbarComponent,
     SubscribeModalComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

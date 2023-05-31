@@ -15,7 +15,7 @@ export class ArticleListComponent implements OnInit {
   dummyArticles = [
     {
       _id: '3',
-      imageUrl: 'assets/IgniteInsight_logo3.png',
+      imageUrl: 'assets/IgniteInsight_logo4.png',
       date: new Date(),
       title: 'Dummy Article 3',
       content: 'This is the last dummy article.'
@@ -29,7 +29,7 @@ export class ArticleListComponent implements OnInit {
     },
     {
       _id: '1',
-      imageUrl: 'assets/IgniteInsight_logo3.png',
+      imageUrl: 'assets/IgniteInsight_logo1.png',
       date: new Date(),
       title: 'Dummy Article 1',
       content: 'This is a dummy article.'
