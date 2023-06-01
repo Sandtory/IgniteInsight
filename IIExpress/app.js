@@ -9,6 +9,9 @@ require("dotenv").config();
 const errorHandler = require('./middleware/errorHandler');
 const articlesRouter = require('./routes/articles');
 const queue = require('./routes/queue');
+const cron = require('node-cron');
+const Article = require('./models/articleModel');
+
 
 
 
@@ -34,6 +37,24 @@ app.use("/users", usersRouter);
 
 app.use('/api/articles', articlesRouter);
 queue.start();
+
+const decayFactor = 0.9;
+cron.schedule('0 */4 * * *', async function() {
+  console.log('Starting cron job');
+  try {
+    const articles = await Article.find();
+    for (let article of articles) {
+      const oldViewCount = article.viewCount;
+      article.viewCount = Math.floor(article.viewCount * decayFactor);
+      console.log(`Updating view count for article ${article.title}: ${oldViewCount} -> ${article.viewCount}`);
+      await article.save();
+    }
+  } catch (err) {
+    console.error('Error in cron job:', err);
+  }
+  console.log('Finished cron job');
+});
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../IIAngular/dist/IIAngular/index.html"));
