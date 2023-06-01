@@ -19,6 +19,15 @@ export class ArticleService {
     );
   }
 
+  getTopArticles(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/articles/top`).pipe(
+      catchError((error) => {
+        console.error('Error fetching top articles', error);
+        return of([]);
+      })
+    );
+  }
+
   getArticle(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/articles/${id}`).pipe(
       catchError((error) => {

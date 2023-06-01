@@ -6,36 +6,11 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const errorHandler = require('./middleware/errorHandler');
+const articlesRouter = require('./routes/articles');
+const queue = require('./routes/queue');
 
-// Mongoose setup and connection string
-mongoose
-  .connect(
-    `mongodb+srv://${process.env.MongoDBUser}:${process.env.MongoDBPass}@maincluster.giandc3.mongodb.net/?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Could not connect to MongoDB", err));
 
-//Schema for post request
-const articleSchema = new mongoose.Schema({
-  title: String,
-  content: String,
-  imageUrl: String, // New field for image URL
-  tags: [String],
-  date: { type: Date, default: Date.now },
-  // Add more fields as needed
-});
-
-articleSchema.index({ title: "text", content: "text" }, function (err) {
-  if (err) {
-    console.error("Failed to create index", err);
-  } else {
-    console.log("Successfully created index");
-  }
-});
-
-// Mongodb article model
-const Article = mongoose.model("Article", articleSchema);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -52,65 +27,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(errorHandler);
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-// Define API routes here
-// For example:
-app.get("/api/articles", async (req, res) => {
-  try {
-    const articles = await Article.find();
-    res.json(articles);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
-app.get("/api/articles/search", async (req, res) => {
-  try { 
-    const q = req.query.q;
-    const articles = await Article.find({ $text: { $search: q } });
-    res.json(articles);
-  } catch (err) {
-    console.error(err); 
-    res.status(500).json({ error: err.toString() });
-  }
-});
-
-app.get("/api/articles/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    console.log("Finding article with ID:", id); // Log the ID
-    const article = await Article.findById(id);
-    console.log("Found article:", article); // Log the found article
-    if (!article) {
-      return res.status(404).send("Article not found");
-    }
-    res.json(article);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
-app.post("/api/articles", (req, res) => {
-  const { title, content, imageUrl, tags } = req.body;
-
-  // Check if title and content are not empty
-  if (!title || !content) {
-    res.status(400).send("Title and content are required.");
-    return;
-  }
-
-  // Create a new article with the request body
-  const article = new Article({ title, content, imageUrl, tags });
-
-  // Save the new article to the database
-  article
-    .save()
-    .then(() => res.status(201).send())
-    .catch((err) => res.status(500).send(err));
-});
+app.use('/api/articles', articlesRouter);
+queue.start();
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../IIAngular/dist/IIAngular/index.html"));

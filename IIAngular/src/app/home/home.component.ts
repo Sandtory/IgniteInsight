@@ -11,7 +11,7 @@ import { ArticleService } from '../articles/article.service';
 })
 export class HomeComponent implements OnInit {
 
-  articles: any[]= [];
+  topArticles: any[] = [];
   dummyArticles = [
     {
       _id: '3',
@@ -43,11 +43,11 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-      this.articleService.getArticles().subscribe(articles => {
+      this.articleService.getTopArticles().subscribe((articles: any) => {
         if (articles.length === 0) {
-          this.articles = this.dummyArticles;
+          this.topArticles = this.dummyArticles;
         } else {
-          this.articles = articles;
+          this.topArticles = articles;
         }
       });
     }

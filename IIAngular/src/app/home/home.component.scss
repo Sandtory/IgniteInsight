@@ -59,10 +59,14 @@ header {
     /* Make card text black and not underlined */
     color: black;
     text-decoration: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   .post-title {
     /* Make post title black and not underlined */
     color: black;
     text-decoration: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   

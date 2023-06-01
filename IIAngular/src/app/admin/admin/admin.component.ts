@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
     private router: Router,
     ) {
     this.articleForm = this.fb.group({
-      title: ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(100)]],
       content: ['', Validators.required],
       imageUrl: [''],
       tags: ['']

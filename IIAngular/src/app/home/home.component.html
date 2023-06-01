@@ -30,9 +30,9 @@
         <!-- ngFor let article of articles be first 3 articles -->
         <div class="container">
           <div class="row">
-            <p class="lead">New articles</p>
+            <p class="lead">Top articles today</p>
             <!-- ngFor let article of articles be first 3 articles -->
-            <div class="col-lg-4" *ngFor="let article of articles.reverse()">
+            <div class="col-lg-4" *ngFor="let article of topArticles">
               <!-- Blog post-->
               <div class="mb-4">
                 <a [routerLink]="['/article', article._id]">
@@ -47,8 +47,10 @@
                   <div class="small text-muted">
                     {{ article.date | date : "short" }}
                   </div>
-                  <h2 class="h4">{{ article.title }}</h2>
-                  <p [innerHTML]="article.content | slice : 0 : 100"></p>
+                  <h2 class="h4 post-title">{{ article.title }}</h2>
+                  <div class="card-text" style="height: 100px; overflow: hidden; text-overflow: ellipsis;">
+                    <div [innerHTML]="article.content | slice : 0 : 100"></div>
+                  </div>                  
                   <a class="btn btn-dark" [routerLink]="['/article', article._id]">Read more →</a>
                 </div>
               </div>
