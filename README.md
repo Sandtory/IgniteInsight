@@ -1,6 +1,6 @@
 # IgniteInsight
 
-IgniteInsight is a blogging platform that allows users to share their musings, insights, and technical knowledge. It is a space where users can post detailed articles, offering a look into their learning journey and the knowledge they have accumulated.
+IgniteInsight is a blogging platform that allows users to share their musings, insights, and technical knowledge. It is a space where users can post detailed articles, offering a look into their learning journey and the knowledge they have accumulated. It will serve as a portofolio for users to show off their work and research to potential employers or to aquaintances with a special interest in their professional endeavours.
 
 ## Technology Stack
 
