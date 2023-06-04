@@ -13,36 +13,25 @@ import { ThemeService } from '../services/theme.service';
 export class HomeComponent implements OnInit {
   topArticles: any[] = [];
   darkMode = false;
-  dummyArticles = [
-    {
-      _id: '3',
-      imageUrl: 'assets/IgniteInsight_logo4.png',
-      date: new Date(),
-      title: 'Dummy Article 3',
-      content: 'This is the last dummy article.'
-    },
-    {
-      _id: '2',
-      imageUrl: 'assets/IgniteInsight_logo3.png',
-      date: new Date(),
-      title: 'Dummy Article 2',
-      content: 'This is another dummy article.'
-    },
-    {
-      _id: '1',
-      imageUrl: 'assets/IgniteInsight_logo1.png',
-      date: new Date(),
-      title: 'Dummy Article 1',
-      content: 'This is a dummy article.'
-    },
-    // Add more dummy articles as needed
-  ];
+  dummyArticles: any[] = [];
+  
   
 
   constructor(
     private articleService: ArticleService,
     private themeService: ThemeService,
-    ) { }
+    ) { 
+      for (let i = 1; i <= 6; i++) {
+        this.dummyArticles.push({
+          _id: i.toString(),
+          imageUrl: `assets/stock${i}.png`, // replace with your actual image paths
+          date: new Date(),
+          title: `Dummy Article ${i}`,
+          content: `This is a dummy article number ${i}.`
+        });
+      }
+    }
+
 
     ngOnInit() {
       this.articleService.getTopArticles().subscribe((articles: any) => {

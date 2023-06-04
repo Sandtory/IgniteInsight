@@ -8,13 +8,18 @@ import { ThemeService } from './services/theme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'IIAngular';
   darkMode = false;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {
+    // Read the initial theme state from local storage
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      this.darkMode = storedTheme === 'true';
+      this.themeService.setDarkTheme(this.darkMode);
+    }
 
-  ngOnInit() {
     this.themeService.isDarkTheme.subscribe(darkMode => {
       this.darkMode = darkMode;
     });

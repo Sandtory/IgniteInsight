@@ -4,6 +4,7 @@ import { ArticleService } from '../article.service';
 import { SubscribeModalComponent } from 'src/app/subscribe-modal/subscribe-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ThemeService } from 'src/app/services/theme.service';
 
 
 @Component({
@@ -13,13 +14,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ArticleDetailComponent implements OnInit {
   article: any;
+  darkMode = false;
 
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
     private modalService: NgbModal,
     private renderer: Renderer2, 
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private themeService: ThemeService,
   ) { }
 
   ngOnInit() {
@@ -45,6 +48,9 @@ export class ArticleDetailComponent implements OnInit {
       this.renderer.setAttribute(articleLink, 'id', 'articleLink');
       this.renderer.setAttribute(articleLink, 'data-article-id', id);
       this.renderer.appendChild(document.body, articleLink);
+    });
+    this.themeService.isDarkTheme.subscribe(darkMode => {
+      this.darkMode = darkMode;
     });
   }
   openSubscribeModal(event: any) {

@@ -1,0 +1,44 @@
+.background {
+    background-color: var(--bgColor);
+    min-height: 100vh;
+  }
+
+  .btn-custom {
+    background-color: var(--textColor);
+    color: var(--bgColor);
+  }
+
+  .card-custom {
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    border-color: var(--borderColor);
+  }
+  
+  .article-item {
+    border-bottom: 1px solid var(--borderColor);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .article {
+    margin-bottom: 2rem;
+  }
+  
+  .article-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .article-content {
+    padding: 1rem 0;
+  }
+  
+  .article-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .article-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }

@@ -9,9 +9,9 @@
             A personal blogging platform that showcases the musings, insights,
             and technical knowledge of its users.
           </span>
-          <p>Made by Henning Sandtorv</p>
+          <p></p>
           <a class="btn btn-danger" [routerLink]="['/articles']"
-            >Browse articles</a
+            >Browse new articles</a
           >
         </div>
       </div>
@@ -19,7 +19,7 @@
   </div>
 </header>
 <body
-  [class.dark-theme]="darkMode"
+[class.dark-theme]="darkMode"
   [class.light-theme]="!darkMode"
   class="d-flex flex-column h-100"
 >
@@ -29,13 +29,13 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <!-- ngFor let article of articles be first 3 articles -->
           <div class="container">
-            <div class="row">
+            <div class="row py-3">
               <p class="lead">Top articles today</p>
               <!-- ngFor let article of articles be first 3 articles -->
               <div class="col-lg-4" *ngFor="let article of topArticles">
                 <!-- Blog post-->
-                <div class="mb-4">
-                  <a [routerLink]="['/article', article._id]">
+                <a [routerLink]="['/article', article._id]" style="text-decoration: none; color: inherit;">
+                  <div class="mb-4">
                     <img
                       class="img-fluid rounded"
                       style="height: 300px; object-fit: cover"
@@ -44,31 +44,26 @@
                       "
                       alt="..."
                     />
-                  </a>
-                  <div>
-                    <div class="small text-muted">
-                      {{ article.date | date : "short" }}
-                    </div>
-                    <h2 class="h4 post-title">{{ article.title }}</h2>
-                    <div
-                      class="card-text"
-                      style="
-                        height: 100px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                      "
-                    >
+                    <div>
+                      <div class="small text-muted">
+                        {{ article.date | date : "short" }}
+                      </div>
+                      <h2 class="h4 post-title">{{ article.title }}</h2>
                       <div
-                        [innerHTML]="article.content | slice : 0 : 100"
-                      ></div>
+                        class="card-text"
+                        style="
+                          height: 100px;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        "
+                      >
+                        <div
+                          [innerHTML]="article.content | slice : 0 : 100"
+                        ></div>
+                      </div>
                     </div>
-                    <a
-                      class="btn btn-dark"
-                      [routerLink]="['/article', article._id]"
-                      >Read more →</a
-                    >
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ async function generateArticles(numArticles) {
   for (let i = 0; i < numArticles; i++) {
     const article = new Article({
       title: faker.lorem.sentence(),
-      content: faker.lorem.paragraphs(),
+      content: faker.lorem.paragraphs(5).replace(/\n/g, '</p><p>'),
       imageUrl: faker.image.nature(640, 480, true),
       tags: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
       date: faker.date.past(),

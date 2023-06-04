@@ -16,28 +16,36 @@ export class ThemeService {
 
   currentMode: Mode = Mode.LIGHT;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    const savedTheme = localStorage.getItem('darkMode');
-    const initialTheme = savedTheme !== null ? JSON.parse(savedTheme) : false;
-    this._darkTheme = new BehaviorSubject<boolean>(initialTheme);
-    this.isDarkTheme = this._darkTheme.asObservable();
-  }
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   setDarkTheme(isDarkTheme: boolean) {
-    localStorage.setItem('darkMode', JSON.stringify(isDarkTheme));
     this._darkTheme.next(isDarkTheme);
+    if (isDarkTheme) {
+      this.currentMode = Mode.DARK;
+    } else {
+      this.currentMode = Mode.LIGHT;
+    }
+    this.updateBodyClasses();
+    localStorage.setItem('theme', this.currentMode);
   }
 
   toggleMode() {
-    this.document.body.classList.toggle(Mode.LIGHT);
-    this.document.body.classList.toggle(Mode.DARK);
     if (this.currentMode === Mode.LIGHT) {
       this.currentMode = Mode.DARK;
     } else {
       this.currentMode = Mode.LIGHT;
     }
-    this.setDarkTheme(this.currentMode === Mode.DARK);
+    this._darkTheme.next(this.currentMode === Mode.DARK);
+    this.updateBodyClasses();
+  }
 
-    localStorage.setItem('theme', this.currentMode);
+  private updateBodyClasses() {
+    if (this.currentMode === Mode.DARK) {
+      this.document.body.classList.add(Mode.DARK);
+      this.document.body.classList.remove(Mode.LIGHT);
+    } else {
+      this.document.body.classList.add(Mode.LIGHT);
+      this.document.body.classList.remove(Mode.DARK);
+    }
   }
 }
