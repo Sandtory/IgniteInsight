@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../articles/article.service';
+import { ThemeService } from '../services/theme.service';
 
 
 
@@ -10,8 +11,8 @@ import { ArticleService } from '../articles/article.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   topArticles: any[] = [];
+  darkMode = false;
   dummyArticles = [
     {
       _id: '3',
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
+    private themeService: ThemeService,
     ) { }
 
     ngOnInit() {
@@ -49,6 +51,9 @@ export class HomeComponent implements OnInit {
         } else {
           this.topArticles = articles;
         }
+      });
+      this.themeService.isDarkTheme.subscribe(darkMode => {
+        this.darkMode = darkMode;
       });
     }
     

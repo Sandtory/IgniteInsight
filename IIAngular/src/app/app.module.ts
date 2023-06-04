@@ -13,7 +13,7 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 import { ArticlesModule } from './articles/articles.module';
 import { SubscribeModalComponent } from './subscribe-modal/subscribe-modal.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { ThemeService } from './services/theme.service';
 
 
 
@@ -45,7 +45,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     ArticlesModule,
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

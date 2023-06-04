@@ -3,6 +3,8 @@ import { ArticleService } from '../article.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubscribeModalComponent } from 'src/app/subscribe-modal/subscribe-modal.component';
 import { SearchService } from 'src/app/services/search.service';
+import { ThemeService } from 'src/app/services/theme.service';
+
 
 @Component({
   selector: 'app-article-list',
@@ -11,6 +13,7 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class ArticleListComponent implements OnInit {
   articles: any[] = [];
+  darkMode = false;
   errorMessage: string | null = null;
   dummyArticles = [
     {
@@ -39,7 +42,8 @@ export class ArticleListComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private modalService: NgbModal,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private themeService: ThemeService,
   ) {}
 
   ngOnInit() {
@@ -59,6 +63,9 @@ export class ArticleListComponent implements OnInit {
         });
         this.errorMessage = 'Cannot find any articles under that name';
       }
+    });
+    this.themeService.isDarkTheme.subscribe(darkMode => {
+      this.darkMode = darkMode;
     });
   }
   

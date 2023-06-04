@@ -1,3 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import url('https://fonts.googleapis.com/css?family=Noticia+Text|Lalezar');
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css?family=Noticia+Text|Lalezar");
+
+$bgColor_light: white;
+$bgColor_dark: rgba(33,37,41,255);
+
+$textColor_light: rgba(33,37,41,255);
+$textColor_dark: white;
+
+$borderColor_light: rgba(33,37,41,255);
+$borderColor_dark: white;
+
+$headerColor_light: rgb(242, 242, 242);
+$headerColor_dark: rgb(30, 30, 30);
+
+// mixin that enables css variables in light mode
+:root {
+    --bgColor: #{$bgColor_light};
+    --textColor: #{$textColor_light};
+    --borderColor: #{$borderColor_light};
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    --headerColor: #{$headerColor_light};
+  }
+  
+  body.dark {
+    --bgColor: #{$bgColor_dark};
+    --textColor: #{$textColor_dark};
+    --borderColor: #{$borderColor_dark};
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    --headerColor: #{$headerColor_dark};
+  }
+  

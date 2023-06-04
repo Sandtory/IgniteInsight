@@ -42,7 +42,7 @@ header {
   }
   
   .masthead {
-    height: 70vh; /* Adjust this value to change the height of the header */
+    height: 50vh; /* Adjust this value to change the height of the header */
     background-attachment: fixed; /* This makes the background image follow the scroll */
     background-size: cover;
     background-position: center bottom;
@@ -57,16 +57,29 @@ header {
   }
   .card-text {
     /* Make card text black and not underlined */
-    color: black;
     text-decoration: none;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
   .post-title {
     /* Make post title black and not underlined */
-    color: black;
     text-decoration: none;
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
+
+  .dark-theme .container {
+    background-color: rgba(33,37,41,255);
+    color: #fff;
+  }
+  
+  .light-theme .container {
+    background-color: #fff;
+    color: rgba(33,37,41,255);
+  }
+  .background {
+    background-color: var(--bgColor);
+    min-height: 100vh;
+  }
+  
   

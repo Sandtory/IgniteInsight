@@ -5,8 +5,13 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const articleModel = require('../models/articleModel'); // Add this line
 const queue = require('./queue'); // Add this line
+const rateLimit = require("express-rate-limit");
 
-
+const viewLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 1, // limit each IP to 1 requests per windowMs
+  message: "Too many view requests from this IP"
+});
 
 // Mongodb article model
 const Article = mongoose.model("Article");
@@ -73,7 +78,7 @@ router.post('/', (req, res) => {
     .catch((err) => res.status(500).send(err));
 });
 
-router.post('/:id/views', async (req, res) => {
+router.post('/:id/views', viewLimiter, async (req, res) => {
     const articleId = req.params.id;
   
     // Find the article in the database and increment its view count

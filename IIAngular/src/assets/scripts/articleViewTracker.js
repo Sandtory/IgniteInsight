@@ -11,13 +11,13 @@ function startViewTracking() {
   viewTimer = setInterval(() => {
     viewCount += 1;
 
-    // After 10 seconds, send a request to the backend
-    if (viewCount % 10 === 0) {
+    // After 30 seconds, send a request to the backend
+    if (viewCount % 30 === 0) {
       incrementViewCount(articleId);
     }
 
-    // Stop the timer after 3 minutes
-    if (viewCount >= 180) {
+    // Stop the timer after 30 seconds
+    if (viewCount >= 30) {
       stopViewTracking();
     }
   }, 1000); // 1000 milliseconds = 1 second

@@ -4,3 +4,31 @@
   font-size: 22px;
   /* Add any other desired font properties */
 }
+
+:host {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+.navbar {
+  color: var(--textColor);
+}
+
+.nav-link {
+  color: var(--textColor);
+}
+
+.theme-toggle-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.theme-toggle-button img {
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle-button:hover img {
+  opacity: 0.7;
+}
+

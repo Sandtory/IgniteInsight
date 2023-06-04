@@ -1,0 +1,32 @@
+.dark-theme .container {
+    background-color: rgba(33,37,41,255);
+    color: #fff;
+  }
+  
+  .light-theme .container {
+    background-color: #fff;
+    color: rgba(33,37,41,255);
+  }
+
+  .background {
+    background-color: var(--bgColor);
+    min-height: 100vh;
+  }
+
+  .btn-custom {
+    background-color: var(--textColor);
+    color: var(--bgColor);
+  }
+
+  .card-custom {
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    border-color: var(--borderColor);
+  }
+  
+  .article-item {
+    border-bottom: 1px solid var(--borderColor);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  
