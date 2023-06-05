@@ -81,5 +81,10 @@ header {
     background-color: var(--bgColor);
     min-height: 100vh;
   }
+
+  .btn-custom {
+    background-color: var(--textColor);
+    color: var(--bgColor);
+  }
   
   

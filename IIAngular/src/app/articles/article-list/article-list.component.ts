@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SubscribeModalComponent } from 'src/app/subscribe-modal/subscribe-modal.component';
+import { SubscribeModalComponent } from 'src/app/modal/subscribe-modal/subscribe-modal.component';
 import { SearchService } from 'src/app/services/search.service';
 import { ThemeService } from 'src/app/services/theme.service';
 

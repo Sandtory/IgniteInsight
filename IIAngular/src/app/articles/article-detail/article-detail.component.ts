@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../article.service';
-import { SubscribeModalComponent } from 'src/app/subscribe-modal/subscribe-modal.component';
+import { SubscribeModalComponent } from 'src/app/modal/subscribe-modal/subscribe-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ThemeService } from 'src/app/services/theme.service';

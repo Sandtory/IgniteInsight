@@ -11,9 +11,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { ArticlesModule } from './articles/articles.module';
-import { SubscribeModalComponent } from './subscribe-modal/subscribe-modal.component';
+import { SubscribeModalComponent } from './modal/subscribe-modal/subscribe-modal.component';
 import { FooterComponent } from './footer/footer.component';
 import { ThemeService } from './services/theme.service';
+import { LoginRegisterModalComponent } from './modal/login-register-modal/login-register-modal.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -24,7 +27,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'articles', component: ArticleListComponent },
   { path: 'article/:id', component: ArticleDetailComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 
@@ -36,11 +41,14 @@ const routes: Routes = [
     NavbarComponent,
     SubscribeModalComponent,
     FooterComponent,
+    LoginRegisterModalComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{ scrollPositionRestoration: 'top' }),
     NgbModule,
     ReactiveFormsModule,
     ArticlesModule,

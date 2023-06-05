@@ -5,8 +5,8 @@
 >
   <a class="navbar-brand" routerLink="/">
     <img
-      src="assets/IgniteInsight_logo3_remake.png"
-      width="40"
+    [src]="darkMode ? 'assets/IgniteInsight_logo3_removebg_white.png' : 'assets/IgniteInsight_logo3_removebg.png'"
+      width="36"
       height="40"
       class="d-inline-block align-top"
       alt=""
@@ -21,26 +21,35 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/articles']">Articles</a>
       </li>
-      
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/admin']">Write</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li> -->
-      
     </ul>
   </div>
+  <!-- <button (click)="openLoginRegisterModal($event)" 
+    class="btn btn-outline-success my-2 my-sm-0"
+    type="button"
+    data-mdb-toggle="modal"
+    data-mdb-target="#login-register-modal"
+  >
+    Login/Register
+  </button> -->
 
   <button (click)="toggleMode()" class="theme-toggle-button">
-    <img 
-      [src]="darkMode ? 'assets/II_moon2.png' : 'assets/II_sun2.png'" 
-      width="40" 
-      height="40" 
-      class="d-inline-block align-top" 
+    <img
+      [src]="darkMode ? 'assets/II_moon2.png' : 'assets/II_sun2.png'"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
       alt="Toggle Dark Mode"
     />
-</button>
+  </button>
 
   <form
     class="form-inline"

@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
 import { ThemeService } from '../services/theme.service';
+import { LoginRegisterModalComponent } from '../modal/login-register-modal/login-register-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +20,8 @@ export class NavbarComponent {
     private articleService: ArticleService,
     private searchService: SearchService,
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private modalService: NgbModal,
   ) {
     this.themeService.isDarkTheme.subscribe((darkMode) => {
       this.darkMode = darkMode;
@@ -35,4 +39,8 @@ export class NavbarComponent {
   toggleMode() {
     this.themeService.toggleMode();
   }
+  // openLoginRegisterModal(event: any) {
+  //   event.preventDefault();
+  //   this.modalService.open(LoginRegisterModalComponent);
+  // }
 }

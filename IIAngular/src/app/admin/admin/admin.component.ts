@@ -5,6 +5,8 @@ import { AdminModule } from '../admin.module';
 import { ArticleService } from 'src/app/articles/article.service';
 import { Router } from '@angular/router';
 import  * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ThemeService } from 'src/app/services/theme.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +14,7 @@ import  * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  darkMode = false;
   public Editor = ClassicEditor;
   articleForm: FormGroup;
 
@@ -19,6 +22,7 @@ export class AdminComponent implements OnInit {
     private fb: FormBuilder, 
     private articleService: ArticleService,
     private router: Router,
+    private themeService: ThemeService,
     ) {
     this.articleForm = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(100)]],
@@ -47,7 +51,9 @@ export class AdminComponent implements OnInit {
   
 
   ngOnInit() {
-    
+    this.themeService.isDarkTheme.subscribe(darkMode => {
+      this.darkMode = darkMode;
+    });
   }
 }
 

@@ -10,3 +10,7 @@
   .overlay {
     background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
   }
+
+  .background {
+    background-color: var(--bgColor);
+  }
