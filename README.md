@@ -2,6 +2,8 @@
 
 IgniteInsight is a blogging platform that allows users to share their musings, insights, and technical knowledge. It is a space where users can post detailed articles, offering a look into their learning journey and the knowledge they have accumulated. It will serve as a portofolio for users to show off their work and research to potential employers or to aquaintances with a special interest in their professional endeavours.
 
+<img width="1439" alt="Screenshot 2023-06-05 at 14 03 43" src="https://github.com/Sandtory/IgniteInsight/assets/82057616/9148e7c7-bf7f-49a9-9052-7d64a50cbd14">
+
 ## Technology Stack
 
 ### Frontend
@@ -14,6 +16,7 @@ The server-side of IgniteInsight employs [Node.js](https://nodejs.org/) with [Ex
 
 ### Database
 
+
 IgniteInsight stores article data in [MongoDB](https://www.mongodb.com/), a flexible and scalable NoSQL database that integrates well with the rest of the technology stack. Each article is stored as a document in the database, with fields for the title, content, image URL, tags, and view count.
 
 ### Hosting
@@ -25,6 +28,8 @@ IgniteInsight will be hosted on [Heroku](https://www.heroku.com/), a cloud platf
 ### Article Posting
 
 Users can create and post articles on the platform. Each article includes a title, content, image URL, and tags. The content of the article supports rich text formatting for a better reading experience.
+
+<img width="1438" alt="Screenshot 2023-06-05 at 14 04 23" src="https://github.com/Sandtory/IgniteInsight/assets/82057616/11b8de9d-547e-42bb-93d6-ad22d4a19951">
 
 ### Article Viewing
 
@@ -39,8 +44,7 @@ To ensure that the most popular articles are the ones currently trending, the vi
 The design of IgniteInsight is simple and user-friendly. It emphasizes its content, enabling readers to focus on the insights shared. This platform serves not just as a blog, but as a journey through the intellectual evolution of its users. It is a valuable tool for potential employers to gauge the depth and breadth of a user's expertise.
 
 Frontpage - MVP
-<img width="1424" alt="Screenshot 2023-06-02 at 15 24 05" src="https://github.com/Sandtory/IgniteInsight/assets/82057616/5dde24a9-bb41-4768-bc5f-0154636f8f4a">
-<img width="1424" alt="Screenshot 2023-06-02 at 15 25 17" src="https://github.com/Sandtory/IgniteInsight/assets/82057616/19227a3f-ef25-4c76-9ab3-fe34c58f3f55">
+
 
 
 ## License
