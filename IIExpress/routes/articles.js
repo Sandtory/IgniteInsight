@@ -10,7 +10,11 @@ const rateLimit = require("express-rate-limit");
 const viewLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 1, // limit each IP to 1 requests per windowMs
-  message: "Too many view requests from this IP"
+  message: "Too many view requests from this IP",
+  keyGenerator: function(req) {
+    // Use the IP address and the article ID as the key for rate limiting
+    return req.ip + req.params.id;
+  }
 });
 
 // Mongodb article model

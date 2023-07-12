@@ -5,8 +5,8 @@ const Article = require('../models/articleModel'); // replace with the path to y
 async function generateArticles(numArticles) {
   for (let i = 0; i < numArticles; i++) {
     const article = new Article({
-      title: faker.lorem.sentence(),
-      content: faker.lorem.paragraphs(5).replace(/\n/g, '</p><p>'),
+      title: faker.lorem.sentence(5),
+      content: faker.lorem.paragraphs(20).replace(/\n/g, '</p><p>'),
       imageUrl: faker.image.nature(640, 480, true),
       tags: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
       date: faker.date.past(),
@@ -20,7 +20,7 @@ async function generateArticles(numArticles) {
 mongoose.connect(`mongodb+srv://${process.env.MongoDBUser}:${process.env.MongoDBPass}@maincluster.giandc3.mongodb.net/?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
-    generateArticles(10) // generate 100 articles
+    generateArticles(100) // generate 100 articles
       .then(() => {
         console.log('Finished generating articles');
         mongoose.disconnect();

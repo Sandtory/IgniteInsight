@@ -5,7 +5,7 @@ import { AdminModule } from '../admin.module';
 import { ArticleService } from 'src/app/articles/article.service';
 import { Router } from '@angular/router';
 import  * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ThemeService } from 'src/app/services/theme.service';
+import { ThemeService } from 'src/app/shared/services/theme.service';
 
 
 @Component({

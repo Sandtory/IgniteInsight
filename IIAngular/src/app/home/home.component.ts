@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../articles/article.service';
-import { ThemeService } from '../services/theme.service';
+import { ThemeService } from '../shared/services/theme.service';
 
 
 

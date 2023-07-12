@@ -8,15 +8,20 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { ArticleDetailComponent } from './articles/article-detail/article-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { ArticlesModule } from './articles/articles.module';
 import { SubscribeModalComponent } from './modal/subscribe-modal/subscribe-modal.component';
 import { FooterComponent } from './footer/footer.component';
-import { ThemeService } from './services/theme.service';
 import { LoginRegisterModalComponent } from './modal/login-register-modal/login-register-modal.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment'; 
+import { ThemeService } from './shared/services/theme.service';
+import { AuthService } from './shared/services/auth.service';
+import { RegisterComponent } from './authentication/register/register.component';
+
 
 
 
@@ -52,8 +57,11 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule,
     ArticlesModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    FormsModule,
   ],
-  providers: [ThemeService],
+  providers: [ThemeService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
